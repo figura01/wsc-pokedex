@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     max-width: 10rem;
+    background-color:deepskyblue;
+    border-radius: 5px;
 }
 
 .pokemon-card img {
