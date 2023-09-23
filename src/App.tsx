@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavBar } from './components/NavBar';
 import { PokemonCard } from './components/PokemonCard';
 import styles from './App.module.css';
 
@@ -30,15 +31,23 @@ const pokemonList = [
 
 
 const App:React.FC = () => {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
+  const [pokemonIndex, setPokemonIndex] = useState<number>(0);
+
+  const handleIncrement = () => {
+    setPokemonIndex(pokemonIndex+1)
+  }
+
+  const handleDecrement = () => {
+    setPokemonIndex(pokemonIndex-1)
+  }
   return <div className={styles.app}>
     <h1>
       My futur Pokedex app !
     </h1>
     <div className={styles.container}>
-      <button disabled={pokemonIndex < 1} onClick={() => setPokemonIndex(pokemonIndex-1)}>Précédent</button>
+      
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      <button disabled={pokemonIndex >= pokemonList.length-1}onClick={() => setPokemonIndex(pokemonIndex+1)}>Suivant</button>
+      <NavBar handleIncrement={handleIncrement} handleDecrement={handleDecrement} pokemonIndex={pokemonIndex} pokemonListLength={pokemonList.length}/>
     </div>
   </div>
 }
