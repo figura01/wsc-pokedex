@@ -1,13 +1,15 @@
 import React from "react";
+import { Pokemon } from "../types";
+import styles from "./NavBar.module.css";
+
 export const NavBar:React.FC<{
-    handleIncrement:() => void, 
-    handleDecrement:() => void, 
-    pokemonIndex:number, 
-    pokemonListLength: number
+    handleSetIndex: (i: number) => void,
+    pokemonList: Pokemon[]
 }> = (
-    { handleIncrement, handleDecrement, pokemonListLength, pokemonIndex}) => {
-    return <nav>
-        <button disabled={pokemonIndex < 1} onClick={() => handleDecrement()}>Précédent</button>
-        <button disabled={pokemonIndex >= pokemonListLength}onClick={() => handleIncrement()}>Suivant</button>
+    { pokemonList, handleSetIndex }) => {
+    return <nav className={styles.navbar}>
+        {pokemonList.map((p:Pokemon, i:number) => 
+            <button className={styles.button} key={`button-${i}`} onClick={() => handleSetIndex(i)}>{p.name}</button>
+        )}
     </nav>
 }

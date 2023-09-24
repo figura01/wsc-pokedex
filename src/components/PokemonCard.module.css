@@ -6,6 +6,8 @@
     max-width: 10rem;
     background-color:deepskyblue;
     border-radius: 5px;
+    min-height: calc((184/16)*1rem);
+    min-width: 10rem;
 }
 
 .pokemon-card img {

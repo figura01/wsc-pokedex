@@ -32,13 +32,8 @@ const pokemonList = [
 
 const App:React.FC = () => {
   const [pokemonIndex, setPokemonIndex] = useState<number>(0);
-
-  const handleIncrement = () => {
-    setPokemonIndex(pokemonIndex+1)
-  }
-
-  const handleDecrement = () => {
-    setPokemonIndex(pokemonIndex-1)
+  const handleSetIndex = (currentIndex: number) => {
+    setPokemonIndex(currentIndex)
   }
   return <div className={styles.app}>
     <h1>
@@ -47,7 +42,7 @@ const App:React.FC = () => {
     <div className={styles.container}>
       
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      <NavBar handleIncrement={handleIncrement} handleDecrement={handleDecrement} pokemonIndex={pokemonIndex} pokemonListLength={pokemonList.length}/>
+      <NavBar pokemonList={pokemonList} handleSetIndex={handleSetIndex}/>
     </div>
   </div>
 }
